@@ -7,3 +7,5 @@ load('master2wok.RData')
 wokm<-master2wok$SO
 library(stringdist)
 system.time(m<-amatch(jstorm,wokm))
+m2m<-data.table(jix=which(!is.na(m)),jstor=jstorm[which(!is.na(m))],wix=m[!is.na(m)],wok=wokm[m[!is.na(m)]])
+save(m2m,file='m2m.RData')
